@@ -40,10 +40,9 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.6;
-  padding-bottom: 64px; /* space for fixed taskbar */
+  padding-bottom: 64px;
 }
 
-/* faint CRT/desktop grid backdrop */
 .crt-grid {
   position: fixed;
   inset: 0;
@@ -54,6 +53,48 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(circle at 50% 20%, black, transparent 85%);
+}
+
+.crt-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 38%, rgba(127, 216, 214, 0.05) 0%, transparent 55%);
+}
+.crt-scan {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0px, rgba(255, 255, 255, 0.018) 1px, transparent 2px, transparent 3px);
+  mix-blend-mode: overlay;
+}
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px 40px rgba(0, 0, 0, 0.55);
+}
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.35;
+  animation: tw 4s ease-in-out infinite;
+}
+@keyframes tw {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.55; }
 }
 
 .desktop {
@@ -67,13 +108,11 @@ body {
   gap: var(--gap);
 }
 
-/* ============ window chrome ============ */
-
 .window {
   background: var(--content-bg);
   border: 2px solid var(--line);
   border-radius: var(--window-radius);
-  box-shadow: 8px 8px 0 var(--shadow-hard);
+  box-shadow: 8px 8px 0 var(--shadow-hard), 0 0 46px rgba(127, 216, 214, 0.1);
 }
 
 .window--nested {
@@ -114,8 +153,6 @@ body {
 .window__body {
   padding: clamp(1.5rem, 5vw, 2.75rem);
 }
-
-/* ============ pop-up windows (win95-style) ============ */
 
 .window--popup {
   position: fixed;
@@ -174,8 +211,6 @@ body {
 .btn--back {
   margin-top: 1.75rem;
 }
-
-/* ============ hero ============ */
 
 .window--hero .window__body--hero {
   padding: clamp(2rem, 7vw, 3.5rem) clamp(1.5rem, 5vw, 2.75rem);
@@ -248,12 +283,10 @@ body {
 .btn:hover, .btn:focus-visible {
   background: var(--accent);
   transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--shadow-hard);
+  box-shadow: 5px 5px 0 var(--shadow-hard), 0 0 14px rgba(127, 216, 214, 0.5);
 }
 .btn__arrow { transition: transform 0.15s ease; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
-
-/* ============ section copy ============ */
 
 .eyebrow {
   font-family: var(--font-display);
@@ -274,8 +307,6 @@ body {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   margin-bottom: 2rem;
 }
-
-/* ============ team ============ */
 
 .team {
   display: grid;
@@ -328,8 +359,6 @@ body {
 }
 .stat-icon { color: var(--accent-dark); margin-right: 0.35em; }
 
-/* ============ contact ============ */
-
 .contact-list {
   list-style: none;
   margin: 0 0 1.5rem;
@@ -365,8 +394,6 @@ body {
 }
 
 .footer-space { height: 0.5rem; }
-
-/* ============ taskbar ============ */
 
 .taskbar {
   position: fixed;
@@ -445,7 +472,6 @@ body {
   .taskbar__clock { display: none; }
 }
 
-/* focus visibility across the site */
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent-dark);
   outline-offset: 2px;
