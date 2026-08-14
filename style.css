@@ -1,6 +1,7 @@
 /* ============================================================
-AruWorks - retro desktop-window aesthetic
-============================================================ */
+   AruWorks — retro desktop-window aesthetic
+   ============================================================ */
+
 :root {
   --bg-desktop: #0d0d0f;
   --frame-light: #d4d4d4;
@@ -14,38 +15,47 @@ AruWorks - retro desktop-window aesthetic
   --accent-dark: #45a6a4;
   --line: #17171a;
   --shadow-hard: rgba(0, 0, 0, 0.55);
+
   --font-display: "DotGothic16", "IBM Plex Mono", monospace;
   --font-body: "IBM Plex Mono", "DotGothic16", monospace;
+
   --window-radius: 3px;
   --gap: clamp(1.25rem, 4vw, 2.5rem);
 }
+
 * { box-sizing: border-box; }
+
 html {
   scroll-behavior: smooth;
 }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
 body {
   margin: 0;
   background: var(--bg-desktop);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.6;
-  padding-bottom: 64px;
+  padding-bottom: 64px; /* space for fixed taskbar */
 }
+
+/* faint CRT/desktop grid backdrop */
 .crt-grid {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background-image:
-  linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(circle at 50% 20%, black, transparent 85%);
 }
+
 .desktop {
   position: relative;
   z-index: 1;
@@ -56,15 +66,20 @@ body {
   flex-direction: column;
   gap: var(--gap);
 }
+
+/* ============ window chrome ============ */
+
 .window {
   background: var(--content-bg);
   border: 2px solid var(--line);
   border-radius: var(--window-radius);
   box-shadow: 8px 8px 0 var(--shadow-hard);
 }
+
 .window--nested {
   box-shadow: 5px 5px 0 var(--shadow-hard);
 }
+
 .window__titlebar {
   display: flex;
   align-items: center;
@@ -74,9 +89,11 @@ body {
   border-bottom: 2px solid var(--line);
   border-radius: 1px var(--window-radius) 0 0;
 }
+
 .window__titlebar--sm {
   padding: 7px 10px;
 }
+
 .window__dot {
   width: 9px;
   height: 9px;
@@ -85,6 +102,7 @@ body {
   background: transparent;
   flex: none;
 }
+
 .window__title {
   margin-left: 5px;
   font-family: var(--font-display);
@@ -92,22 +110,78 @@ body {
   letter-spacing: 0.02em;
   color: var(--ink);
 }
+
 .window__body {
   padding: clamp(1.5rem, 5vw, 2.75rem);
 }
-[data-reveal] {
+
+/* ============ pop-up windows (win95-style) ============ */
+
+.window--popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(90vw, 460px);
+  max-height: 82vh;
+  overflow: auto;
+  z-index: 100;
+  transform: translate(-50%, -46%) scale(0.96);
   opacity: 0;
-  transform: translateY(18px) scale(0.985);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
-[data-reveal].is-open {
+.window--popup.is-open {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
+.window--popup.is-dragging {
+  transition: none;
+  cursor: grabbing;
+}
+.window--popup .window__titlebar {
+  cursor: grab;
+  user-select: none;
+}
+.window--popup .window__titlebar:active {
+  cursor: grabbing;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.scrim.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.window__dot--close {
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s ease;
+}
+.window__dot--close:hover {
+  background: #e0685c;
+  border-color: #8a2f26;
+}
+
+.btn--back {
+  margin-top: 1.75rem;
+}
+
+/* ============ hero ============ */
+
 .window--hero .window__body--hero {
   padding: clamp(2rem, 7vw, 3.5rem) clamp(1.5rem, 5vw, 2.75rem);
   text-align: center;
 }
+
 .sys-line {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -118,6 +192,7 @@ body {
   color: var(--accent-dark);
   font-weight: 600;
 }
+
 .logo {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 9vw, 4rem);
@@ -125,27 +200,32 @@ body {
   margin: 0 0 1.25rem;
   letter-spacing: 0.02em;
 }
+
 .tagline {
   font-size: clamp(1rem, 2.6vw, 1.25rem);
   margin: 0 0 0.75rem;
 }
+
 .cursor {
   display: inline-block;
   color: var(--accent-dark);
   animation: blink 1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+
 .hero-sub {
   color: var(--ink-soft);
   font-size: 0.85rem;
   margin: 0 0 2.25rem;
 }
+
 .hero-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
 }
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -161,6 +241,9 @@ body {
   font-size: 0.85rem;
   box-shadow: 3px 3px 0 var(--shadow-hard);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .btn:hover, .btn:focus-visible {
   background: var(--accent);
@@ -169,6 +252,9 @@ body {
 }
 .btn__arrow { transition: transform 0.15s ease; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
+
+/* ============ section copy ============ */
+
 .eyebrow {
   font-family: var(--font-display);
   font-size: 0.72rem;
@@ -176,26 +262,33 @@ body {
   color: var(--accent-dark);
   margin: 0 0 1rem;
 }
+
 .statement {
   font-family: var(--font-display);
   font-size: clamp(1.3rem, 4vw, 1.9rem);
   line-height: 1.45;
   margin: 0;
 }
+
 .statement--sm {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   margin-bottom: 2rem;
 }
+
+/* ============ team ============ */
+
 .team {
   display: grid;
   gap: 1.25rem;
 }
+
 .window__body--member {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
+
 .avatar {
   width: 84px;
   height: 84px;
@@ -207,6 +300,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+/* procedurally-styled placeholder pixel faces (swap for real avatar art) */
 .avatar[data-avatar="member-a"] { background: conic-gradient(from 210deg, #ffd8e8, #ffe9c7, #ffd8e8); }
 .avatar[data-avatar="member-a"]::before,
 .avatar[data-avatar="member-a"]::after {
@@ -214,6 +308,7 @@ body {
 }
 .avatar[data-avatar="member-a"]::before { left: 20px; }
 .avatar[data-avatar="member-a"]::after { right: 20px; }
+
 .avatar[data-avatar="member-b"] { background: conic-gradient(from 210deg, #d9d2ff, #c9f7e4, #d9d2ff); }
 .avatar[data-avatar="member-b"]::before,
 .avatar[data-avatar="member-b"]::after {
@@ -221,12 +316,15 @@ body {
 }
 .avatar[data-avatar="member-b"]::before { left: 22px; }
 .avatar[data-avatar="member-b"]::after { right: 22px; }
+
 .member-info { flex: 1 1 200px; }
+
 .member-role {
   font-family: var(--font-display);
   font-size: 0.95rem;
   margin: 0 0 0.75rem;
 }
+
 .stat-list {
   list-style: none;
   margin: 0;
@@ -238,6 +336,9 @@ body {
   color: var(--ink-soft);
 }
 .stat-icon { color: var(--accent-dark); margin-right: 0.35em; }
+
+/* ============ contact ============ */
+
 .contact-list {
   list-style: none;
   margin: 0 0 1.5rem;
@@ -265,12 +366,17 @@ body {
   text-underline-offset: 3px;
 }
 .contact-list a:hover, .contact-list a:focus-visible { color: var(--accent-dark); }
+
 .note {
   font-size: 0.72rem;
   color: var(--ink-soft);
   margin: 0;
 }
+
 .footer-space { height: 0.5rem; }
+
+/* ============ taskbar ============ */
+
 .taskbar {
   position: fixed;
   left: 0;
@@ -286,6 +392,7 @@ body {
   font-family: var(--font-display);
   font-size: 0.8rem;
 }
+
 .taskbar__start {
   display: inline-flex;
   align-items: center;
@@ -297,26 +404,40 @@ body {
   border-radius: 2px;
   background: var(--content-bg);
   box-shadow: 2px 2px 0 var(--shadow-hard);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .taskbar__logo {
   width: 10px; height: 10px;
   background: var(--accent);
   border: 1.5px solid var(--line);
 }
+
 .taskbar__links {
   display: flex;
   gap: 0.35rem;
 }
-.taskbar__links a {
+.taskbar__links button {
   color: var(--ink);
   text-decoration: none;
   padding: 0.5em 0.75em;
   border-radius: 2px;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
-.taskbar__links a:hover, .taskbar__links a:focus-visible {
+.taskbar__links button:hover, .taskbar__links button:focus-visible {
   background: rgba(0, 0, 0, 0.12);
   outline: none;
 }
+
 .taskbar__clock {
   margin-left: auto;
   background: #0d0d0f;
@@ -326,11 +447,14 @@ body {
   border-radius: 2px;
   letter-spacing: 0.04em;
 }
+
 @media (max-width: 560px) {
   .taskbar__start span:not(.taskbar__logo) { display: none; }
   .taskbar__links a { padding: 0.5em 0.55em; }
   .taskbar__clock { display: none; }
 }
+
+/* focus visibility across the site */
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent-dark);
   outline-offset: 2px;
