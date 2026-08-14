@@ -49,7 +49,6 @@
     if (e.key === "Escape") closeAll();
   });
 
-  // dragging
   popups.forEach((win) => {
     const handle = win.querySelector("[data-drag-handle]");
     if (!handle) return;
@@ -89,6 +88,20 @@
     }
     handle.addEventListener("pointerdown", onPointerDown);
   });
+})();
+
+(function starField() {
+  const starsEl = document.getElementById("stars");
+  if (!starsEl) return;
+  const count = window.innerWidth < 560 ? 24 : 40;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement("div");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 60 + "vh";
+    s.style.animationDelay = Math.random() * 4 + "s";
+    starsEl.appendChild(s);
+  }
 })();
 
 (function taskbarClock() {
