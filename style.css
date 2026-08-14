@@ -293,29 +293,20 @@ body {
   width: 84px;
   height: 84px;
   flex: none;
-  background: var(--content-bg-soft);
+  background: #ffffff;
   border: 2px solid var(--line);
   border-radius: 2px;
-  image-rendering: pixelated;
+  padding: 4px;
   position: relative;
   overflow: hidden;
 }
-/* procedurally-styled placeholder pixel faces (swap for real avatar art) */
-.avatar[data-avatar="member-a"] { background: conic-gradient(from 210deg, #ffd8e8, #ffe9c7, #ffd8e8); }
-.avatar[data-avatar="member-a"]::before,
-.avatar[data-avatar="member-a"]::after {
-  content: ""; position: absolute; width: 10px; height: 14px; background: var(--ink); top: 32px;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
 }
-.avatar[data-avatar="member-a"]::before { left: 20px; }
-.avatar[data-avatar="member-a"]::after { right: 20px; }
-
-.avatar[data-avatar="member-b"] { background: conic-gradient(from 210deg, #d9d2ff, #c9f7e4, #d9d2ff); }
-.avatar[data-avatar="member-b"]::before,
-.avatar[data-avatar="member-b"]::after {
-  content: ""; position: absolute; width: 10px; height: 10px; background: var(--ink); border-radius: 50%; top: 34px;
-}
-.avatar[data-avatar="member-b"]::before { left: 22px; }
-.avatar[data-avatar="member-b"]::after { right: 22px; }
 
 .member-info { flex: 1 1 200px; }
 
