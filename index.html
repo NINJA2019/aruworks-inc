@@ -13,12 +13,12 @@
 </head>
 <body>
 
-<!-- decorative desktop background grid -->
 <div class="crt-grid" aria-hidden="true"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="crt-glow" aria-hidden="true"></div>
 
 <div class="desktop">
 
-  <!-- ============ HERO / HOME (always-visible desktop) ============ -->
   <header class="window window--hero" id="home">
     <div class="window__titlebar">
       <span class="window__dot" aria-hidden="true"></span>
@@ -40,8 +40,6 @@
   </header>
 
 </div>
-
-<!-- ============ POP-UP WINDOWS (hidden until opened) ============ -->
 
 <section class="window window--popup" id="win-vision" data-popup>
   <div class="window__titlebar" data-drag-handle>
@@ -137,7 +135,6 @@
   </div>
 </section>
 
-<!-- ============ TASKBAR ============ -->
 <nav class="taskbar" aria-label="Site navigation">
   <button type="button" class="taskbar__start" data-open="home-flash">
     <span class="taskbar__logo" aria-hidden="true"></span>
@@ -150,6 +147,9 @@
   </div>
   <div class="taskbar__clock" id="clock" aria-hidden="true">--:--:--</div>
 </nav>
+
+<div class="crt-scan" aria-hidden="true"></div>
+<div class="crt-vignette" aria-hidden="true"></div>
 
 <script src="script.js"></script>
 </body>
