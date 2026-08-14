@@ -12,134 +12,145 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- decorative desktop background grid -->
 <div class="crt-grid" aria-hidden="true"></div>
+
 <div class="desktop">
-<header class="window window--hero" id="home">
-<div class="window__titlebar">
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">AruWorks.exe</span>
+
+  <!-- ============ HERO / HOME (always-visible desktop) ============ -->
+  <header class="window window--hero" id="home">
+    <div class="window__titlebar">
+      <span class="window__dot" aria-hidden="true"></span>
+      <span class="window__dot" aria-hidden="true"></span>
+      <span class="window__dot" aria-hidden="true"></span>
+      <span class="window__title">AruWorks.exe</span>
+    </div>
+    <div class="window__body window__body--hero">
+      <p class="sys-line">SYSTEM STATUS: <span class="sys-online">ONLINE</span></p>
+      <h1 class="logo">AruWorks</h1>
+      <p class="tagline">Bridging cultures through virtual creativity.<span class="cursor" aria-hidden="true">_</span></p>
+      <p class="hero-sub">バーチャルの力で、文化と文化をつなぐクリエイティブスタジオ。</p>
+      <div class="hero-links">
+        <button type="button" class="btn" data-open="vision">Vision <span class="btn__arrow">→</span></button>
+        <button type="button" class="btn" data-open="about">About Us <span class="btn__arrow">→</span></button>
+        <button type="button" class="btn" data-open="contact">Contact <span class="btn__arrow">→</span></button>
+      </div>
+    </div>
+  </header>
+
 </div>
-<div class="window__body window__body--hero">
-<p class="sys-line">SYSTEM STATUS: <span class="sys-online">ONLINE</span></p>
-<h1 class="logo">AruWorks</h1>
-<p class="tagline">Bridging cultures through virtual creativity.<span class="cursor" aria-hidden="true">_</span></p>
-<p class="hero-sub">バーチャルの力で、文化と文化をつなぐクリエイティブスタジオ。</p>
-<div class="hero-links">
-<button type="button" class="btn" data-open="vision">Vision <span class="btn__arrow">→</span></button>
-<button type="button" class="btn" data-open="about">About Us <span class="btn__arrow">→</span></button>
-<button type="button" class="btn" data-open="contact">Contact <span class="btn__arrow">→</span></button>
-</div>
-</div>
-</header>
-</div>
+
+<!-- ============ POP-UP WINDOWS (hidden until opened) ============ -->
+
 <section class="window window--popup" id="win-vision" data-popup>
-<div class="window__titlebar" data-drag-handle>
-<button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">Vision</span>
-</div>
-<div class="window__body">
-<p class="eyebrow">01 / VISION</p>
-<p class="statement">Bridging cultures through<br>virtual creativity.</p>
-<button type="button" class="btn btn--back" data-close>↵ Back</button>
-</div>
+  <div class="window__titlebar" data-drag-handle>
+    <button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__title">Vision</span>
+  </div>
+  <div class="window__body">
+    <p class="eyebrow">01 / VISION</p>
+    <p class="statement">Bridging cultures through<br>virtual creativity.</p>
+    <button type="button" class="btn btn--back" data-close>↵ Back</button>
+  </div>
 </section>
+
 <section class="window window--popup" id="win-about" data-popup>
-<div class="window__titlebar" data-drag-handle>
-<button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">About Us</span>
-</div>
-<div class="window__body">
-<p class="eyebrow">02 / TEAM</p>
-<div class="team">
-<article class="window window--nested">
-<div class="window__titlebar window__titlebar--sm">
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">魚醤蛋拵うお</span>
-</div>
-<div class="window__body window__body--member">
-<div class="avatar" data-avatar="member-a">
-<img src="member-a.png" alt="魚醤蛋拵うおのアイコン" loading="lazy">
-</div>
-<div class="member-info">
-<p class="member-role">VTuber / Content Creator</p>
-<ul class="stat-list">
-<li><span class="stat-icon" aria-hidden="true">▣</span> 7,200+ followers on Bilibili</li>
-<li><span class="stat-icon" aria-hidden="true">▤</span> 33,000+ followers on TikTok</li>
-</ul>
-</div>
-</div>
-</article>
-<article class="window window--nested">
-<div class="window__titlebar window__titlebar--sm">
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">Kakinuma Yuki</span>
-</div>
-<div class="window__body window__body--member">
-<div class="avatar" data-avatar="member-b">
-<img src="member-b.png" alt="Kakinuma Yukiのアイコン" loading="lazy">
-</div>
-<div class="member-info">
-<p class="member-role">Co-Founder / Creative Director</p>
-<ul class="stat-list">
-<li><span class="stat-icon" aria-hidden="true">▦</span> Media Strategy &amp; Research</li>
-</ul>
-</div>
-</div>
-</article>
-</div>
-<button type="button" class="btn btn--back" data-close>↵ Back</button>
-</div>
+  <div class="window__titlebar" data-drag-handle>
+    <button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__title">About Us</span>
+  </div>
+  <div class="window__body">
+    <p class="eyebrow">02 / TEAM</p>
+
+    <div class="team">
+
+      <article class="window window--nested">
+        <div class="window__titlebar window__titlebar--sm">
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__title">魚醤蛋拵うお</span>
+        </div>
+        <div class="window__body window__body--member">
+          <div class="avatar" data-avatar="member-a">
+            <img src="member-a.png" alt="魚醤蛋拵うおのアイコン" loading="lazy">
+          </div>
+          <div class="member-info">
+            <p class="member-role">VTuber / Content Creator</p>
+            <ul class="stat-list">
+              <li><span class="stat-icon" aria-hidden="true">▣</span> 7,200+ followers on Bilibili</li>
+              <li><span class="stat-icon" aria-hidden="true">▤</span> 33,000+ followers on TikTok</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="window window--nested">
+        <div class="window__titlebar window__titlebar--sm">
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__dot" aria-hidden="true"></span>
+          <span class="window__title">Kakinuma Yuki</span>
+        </div>
+        <div class="window__body window__body--member">
+          <div class="avatar" data-avatar="member-b">
+            <img src="member-b.png" alt="Kakinuma Yukiのアイコン" loading="lazy">
+          </div>
+          <div class="member-info">
+            <p class="member-role">Co-Founder / Creative Director</p>
+            <ul class="stat-list">
+              <li><span class="stat-icon" aria-hidden="true">▦</span> Media Strategy &amp; Research</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <button type="button" class="btn btn--back" data-close>↵ Back</button>
+  </div>
 </section>
+
 <section class="window window--popup" id="win-contact" data-popup>
-<div class="window__titlebar" data-drag-handle>
-<button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__dot" aria-hidden="true"></span>
-<span class="window__title">Contact</span>
-</div>
-<div class="window__body">
-<p class="eyebrow">03 / CONTACT</p>
-<p class="statement statement--sm">Let's create something together.</p>
-<ul class="contact-list">
-<li>
-<span class="contact-label">Mail</span>
-<a href="mailto:hello@aruworks.example">hello@aruworks.example</a>
-</li>
-<li>
-<span class="contact-label">Bilibili</span>
-<a href="#" rel="noopener">@aruworks</a>
-</li>
-<li>
-<span class="contact-label">TikTok</span>
-<a href="#" rel="noopener">@aruworks</a>
-</li>
-</ul>
-<p class="note">※ 上記の連絡先はサンプルです。実際のメールアドレス・SNSリンクに差し替えてください。</p>
-<button type="button" class="btn btn--back" data-close>↵ Back</button>
-</div>
+  <div class="window__titlebar" data-drag-handle>
+    <button type="button" class="window__dot window__dot--close" data-close aria-label="Close"></button>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__dot" aria-hidden="true"></span>
+    <span class="window__title">Contact</span>
+  </div>
+  <div class="window__body">
+    <p class="eyebrow">03 / CONTACT</p>
+    <p class="statement statement--sm">Let's create something together.</p>
+
+    <ul class="contact-list">
+      <li>
+        <span class="contact-label">Mail</span>
+        <a href="mailto:aruworks092@gmail.com">aruworks092@gmail.com</a>
+      </li>
+    </ul>
+    <p class="note">※ 実際のメールアドレスに差し替えてください。</p>
+    <button type="button" class="btn btn--back" data-close>↵ Back</button>
+  </div>
 </section>
+
+<!-- ============ TASKBAR ============ -->
 <nav class="taskbar" aria-label="Site navigation">
-<button type="button" class="taskbar__start" data-open="home-flash">
-<span class="taskbar__logo" aria-hidden="true"></span>
-AruWorks
-</button>
-<div class="taskbar__links">
-<button type="button" data-open="vision">Vision</button>
-<button type="button" data-open="about">About Us</button>
-<button type="button" data-open="contact">Contact</button>
-</div>
-<div class="taskbar__clock" id="clock" aria-hidden="true">--:--:--</div>
+  <button type="button" class="taskbar__start" data-open="home-flash">
+    <span class="taskbar__logo" aria-hidden="true"></span>
+    AruWorks
+  </button>
+  <div class="taskbar__links">
+    <button type="button" data-open="vision">Vision</button>
+    <button type="button" data-open="about">About Us</button>
+    <button type="button" data-open="contact">Contact</button>
+  </div>
+  <div class="taskbar__clock" id="clock" aria-hidden="true">--:--:--</div>
 </nav>
+
 <script src="script.js"></script>
 </body>
 </html>
